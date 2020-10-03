@@ -21,7 +21,11 @@ public class UIManager : MonoBehaviour
 
     public void CharacterSpawn()
     {
-        Instantiate(character);
+        if (!GameObject.Find("Player(Clone)"))
+        {
+            Instantiate(character);
+        }
+        
     }
 
 }
