@@ -1,24 +1,33 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using UnityEditor.Build;
 using UnityEngine;
 
-public class CameraMovement : MonoBehaviour {
-    public bool creativeMode;      //Enables camera movements or player movements
-    private float speed;     //Camera movement speed
-    private float yaw;      
-    private float pitch;
+public class PlayerMovement : MonoBehaviour
+{
+    private float speed;        //Player movement speed
+    public float jumpForce = 5.0f;
+    CameraMovement camMovement; //Reference for CameraMovement script
+    Rigidbody rb;               //Reference for Rigidbody
+    public bool isGrounded;
 
-    void Start() {
-        creativeMode = true;
-        speed = 5.0f;
-        yaw = 0.0f;
-        pitch = 0.0f;
+    void Start()
+    {
+        camMovement = Camera.main.GetComponent<CameraMovement>(); //Referencing script in main camera
+        rb = this.GetComponent<Rigidbody>();
+
     }
 
+    void OnCollisionStay() {
+        isGrounded = true;
+    }
 
-    void Update() {
-        if (creativeMode) {
+    // Update is called once per frame
+    void Update()
+    {
+        if (!camMovement.creativeMode) {
+            rb.useGravity = true;
             if (Input.GetKey(KeyCode.LeftShift)) {
                 speed = 10.0f;      //Increases speed when Left Shift is held
             }
@@ -38,15 +47,13 @@ public class CameraMovement : MonoBehaviour {
             if (Input.GetKey(KeyCode.D)) {
                 transform.Translate(new Vector3(speed * Time.deltaTime, 0, 0));
             }
-
-            if (Input.GetMouseButton(1)) {
-                yaw += 2.0f * Input.GetAxis("Mouse X");
-                pitch -= 2.0f * Input.GetAxis("Mouse Y");
-                transform.eulerAngles = new Vector3(pitch, yaw, 0.0f);
+            if (Input.GetKeyDown(KeyCode.Space) && isGrounded) {
+                rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+                isGrounded = false;
             }
         }
-        if (Input.GetKeyDown(KeyCode.G)) {
-            creativeMode = !creativeMode;
+        else {
+            rb.useGravity = false;
         }
     }
 }
