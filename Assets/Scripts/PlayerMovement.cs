@@ -36,16 +36,16 @@ public class PlayerMovement : MonoBehaviour
             }
 
             if (Input.GetKey(KeyCode.W)) {
-                transform.Translate(new Vector3(0, 0, speed * Time.deltaTime));
+                transform.Translate(new Vector3(0.0f, 0.0f, speed * Time.deltaTime));
             }
             if (Input.GetKey(KeyCode.A)) {
-                transform.Translate(new Vector3(-speed * Time.deltaTime, 0, 0));
+                transform.Translate(new Vector3(-speed * Time.deltaTime, 0.0f, 0.0f));
             }
             if (Input.GetKey(KeyCode.S)) {
-                transform.Translate(new Vector3(0, 0, -speed * Time.deltaTime));
+                transform.Translate(new Vector3(0.0f, 0.0f, -speed * Time.deltaTime));
             }
             if (Input.GetKey(KeyCode.D)) {
-                transform.Translate(new Vector3(speed * Time.deltaTime, 0, 0));
+                transform.Translate(new Vector3(speed * Time.deltaTime, 0.0f, 0.0f));
             }
             if (Input.GetKeyDown(KeyCode.Space) && isGrounded) {
                 rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
@@ -54,6 +54,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else {
             rb.useGravity = false;
+            rb.velocity = new Vector3(0.0f,0.0f,0.0f);
         }
     }
 }

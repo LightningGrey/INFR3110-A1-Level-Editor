@@ -206,8 +206,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1416542119}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: WagonSpawn
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1038,6 +1038,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   character: {fileID: 7126898088188378535, guid: 852eece027957de42ac897a5b6444221,
     type: 3}
+  wagon: {fileID: 6516569726373685276, guid: ae1e67c6f6e702544ac47b6dec005616, type: 3}
+  rock: {fileID: 8246415116629455962, guid: 25481e4154250b942a90228accc8f1c5, type: 3}
+  rockCluster: {fileID: 2025665458570979028, guid: f9108bec3ca72e24595922a24d1ab0ad,
+    type: 3}
 --- !u!1 &1461822852
 GameObject:
   m_ObjectHideFlags: 0
@@ -1187,8 +1191,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1416542119}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: RockSpawn
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1319,8 +1323,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1416542119}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: RockClusterSpawn
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
