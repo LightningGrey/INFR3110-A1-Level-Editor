@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!54 &5066305666284391071
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2041258962325833896}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
+--- !u!64 &2517201674103915447
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2041258962325833896}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 3252621386591796590, guid: 64875498460c6c548895d1e7d064c88b, type: 3}
 --- !u!114 &433969491734222811
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -78,12 +108,12 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 64875498460c6c548895d1e7d064c88b,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0.08193856
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 64875498460c6c548895d1e7d064c88b,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.9966374
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 64875498460c6c548895d1e7d064c88b,
         type: 3}
@@ -103,7 +133,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 64875498460c6c548895d1e7d064c88b,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: -9.4
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 64875498460c6c548895d1e7d064c88b,
         type: 3}

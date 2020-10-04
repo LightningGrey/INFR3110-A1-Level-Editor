@@ -7,10 +7,10 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     private float speed;        //Player movement speed
-    public float jumpForce = 5.0f;
+    private float jumpForce = 5.0f;
     CameraMovement camMovement; //Reference for CameraMovement script
     Rigidbody rb;               //Reference for Rigidbody
-    public bool isGrounded;
+    private bool isGrounded;
 
     void Start()
     {
