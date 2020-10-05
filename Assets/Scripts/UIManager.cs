@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Experimental.GlobalIllumination;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
@@ -13,44 +13,45 @@ public class UIManager : MonoBehaviour
     public Light spotLight;
     public Light areaLight;
     public Light pointLight;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    Vector3 spawnPoint;
 
     // Update is called once per frame
     void Update()
     {
-        
+        RaycastHit cast;
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+        if (Physics.Raycast(ray, out cast) && EventSystem.current.IsPointerOverGameObject(-1))
+        {
+            spawnPoint = cast.point;
+        }
     }
 
     public void CharacterSpawn()
     {
-        if (!GameObject.Find("Player(Clone)"))
-        {
-            Instantiate(character);
-        }
-        
+       if (!GameObject.Find("Player(Clone)"))
+       {
+           Instantiate(character, spawnPoint, Quaternion.identity); 
+       }
+       
+   }
+   public void WagonSpawn() {
+       Instantiate(wagon, spawnPoint, Quaternion.identity);
     }
-    public void WagonSpawn() {
-        Instantiate(wagon);
+   public void RockSpawn() {
+       Instantiate(rock, spawnPoint, Quaternion.identity);
     }
-    public void RockSpawn() {
-        Instantiate(rock);
+   public void RockClusterSpawn() {
+       Instantiate(rockCluster, spawnPoint, Quaternion.identity);
     }
-    public void RockClusterSpawn() {
-        Instantiate(rockCluster);
+   public void SpotLightSpawn() {
+       Instantiate(spotLight, spawnPoint, Quaternion.identity);
     }
-    public void SpotLightSpawn() {
-        Instantiate(spotLight);
+   public void AreaLightSpawn() {
+       Instantiate(areaLight, spawnPoint, Quaternion.identity);
     }
-    public void AreaLightSpawn() {
-        Instantiate(areaLight);
-    }
-    public void PointLightSpawn() {
-        Instantiate(pointLight);
+   public void PointLightSpawn() {
+       Instantiate(pointLight, spawnPoint, Quaternion.identity);
     }
 
 }
