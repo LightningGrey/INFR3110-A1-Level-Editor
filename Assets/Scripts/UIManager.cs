@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
     public GameObject character;
+    public GameObject brick;
     public GameObject wagon;
     public GameObject rock;
     public GameObject rockCluster;
@@ -37,7 +38,11 @@ public class UIManager : MonoBehaviour
    public void WagonSpawn() {
        Instantiate(wagon, spawnPoint, Quaternion.identity);
     }
-   public void RockSpawn() {
+    public void BrickSpawn()
+    {
+        Instantiate(brick, spawnPoint, Quaternion.identity);
+    }
+    public void RockSpawn() {
        Instantiate(rock, spawnPoint, Quaternion.identity);
     }
    public void RockClusterSpawn() {
