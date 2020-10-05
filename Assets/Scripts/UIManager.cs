@@ -1,11 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Experimental.GlobalIllumination;
 using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
     public GameObject character;
+    public GameObject wagon;
+    public GameObject rock;
+    public GameObject rockCluster;
+    public Light spotLight;
+    public Light areaLight;
+    public Light pointLight;
 
     // Start is called before the first frame update
     void Start()
@@ -26,6 +33,24 @@ public class UIManager : MonoBehaviour
             Instantiate(character);
         }
         
+    }
+    public void WagonSpawn() {
+        Instantiate(wagon);
+    }
+    public void RockSpawn() {
+        Instantiate(rock);
+    }
+    public void RockClusterSpawn() {
+        Instantiate(rockCluster);
+    }
+    public void SpotLightSpawn() {
+        Instantiate(spotLight);
+    }
+    public void AreaLightSpawn() {
+        Instantiate(areaLight);
+    }
+    public void PointLightSpawn() {
+        Instantiate(pointLight);
     }
 
 }

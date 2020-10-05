@@ -4,14 +4,14 @@ using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class CameraMovement : MonoBehaviour {
-    bool creativeMode;      //Enables camera movements or player movements
+    public bool creativeMode;      //Enables camera movements or player movements
     private float speed;     //Camera movement speed
     private float yaw;      
     private float pitch;
 
     void Start() {
         creativeMode = true;
-        speed = 5.0f;
+        speed = 10.0f;
         yaw = 0.0f;
         pitch = 0.0f;
     }
@@ -20,10 +20,10 @@ public class CameraMovement : MonoBehaviour {
     void Update() {
         if (creativeMode) {
             if (Input.GetKey(KeyCode.LeftShift)) {
-                speed = 10.0f;      //Increases speed when Left Shift is held
+                speed = 20.0f;      //Increases speed when Left Shift is held
             }
             else {
-                speed = 5.0f;
+                speed = 10.0f;
             }
 
             if (Input.GetKey(KeyCode.W)) {
@@ -44,6 +44,9 @@ public class CameraMovement : MonoBehaviour {
                 pitch -= 2.0f * Input.GetAxis("Mouse Y");
                 transform.eulerAngles = new Vector3(pitch, yaw, 0.0f);
             }
+        }
+        if (Input.GetKeyDown(KeyCode.G)) {
+            creativeMode = !creativeMode;
         }
     }
 }
