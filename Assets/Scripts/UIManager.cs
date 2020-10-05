@@ -10,9 +10,8 @@ public class UIManager : MonoBehaviour
     public GameObject wagon;
     public GameObject rock;
     public GameObject rockCluster;
-    public Light spotLight;
-    public Light areaLight;
-    public Light pointLight;
+    public GameObject spotLight;
+    public GameObject pointLight;
     Vector3 spawnPoint;
 
     // Update is called once per frame
@@ -46,9 +45,6 @@ public class UIManager : MonoBehaviour
     }
    public void SpotLightSpawn() {
        Instantiate(spotLight, spawnPoint, Quaternion.identity);
-    }
-   public void AreaLightSpawn() {
-       Instantiate(areaLight, spawnPoint, Quaternion.identity);
     }
    public void PointLightSpawn() {
        Instantiate(pointLight, spawnPoint, Quaternion.identity);
