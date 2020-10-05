@@ -25,6 +25,8 @@ public class UIManager : MonoBehaviour
         {
             spawnPoint = cast.point;
         }
+        //move spawn up to avoid clipping
+        spawnPoint += new Vector3(0.0f, 1.0f, 0.0f);
     }
 
     public void CharacterSpawn()

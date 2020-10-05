@@ -1332,7 +1332,7 @@ MonoBehaviour:
     type: 3}
   brick: {fileID: 3436199837247933276, guid: c57f9bb466e3a00418dfaf17d52389b8, type: 3}
   wagon: {fileID: 5787014852056338755, guid: ae1e67c6f6e702544ac47b6dec005616, type: 3}
-  rock: {fileID: 8246415116629455962, guid: 25481e4154250b942a90228accc8f1c5, type: 3}
+  rock: {fileID: 5687418629472137349, guid: 3cbb0837bb2bf2d4b8e7a50ecc98d940, type: 3}
   rockCluster: {fileID: 2025665458570979028, guid: f9108bec3ca72e24595922a24d1ab0ad,
     type: 3}
   spotLight: {fileID: 7900700006750614970, guid: fbab16d55c903f649a3f87a86e0a1449,
