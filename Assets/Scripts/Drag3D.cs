@@ -13,6 +13,7 @@ public class Drag3D : MonoBehaviour
         zCoordinate = Camera.main.WorldToScreenPoint(gameObject.transform.position).z;
 
         mouseOffset = gameObject.transform.position - GetMouseWorldPos();
+        History.history.Push(new TranslationInteraction(gameObject, gameObject.transform.position));
     }
 
     // Update is called once per frame
@@ -20,6 +21,7 @@ public class Drag3D : MonoBehaviour
     {
         transform.position = GetMouseWorldPos() + mouseOffset;
     }
+
 
     private Vector3 GetMouseWorldPos()
     {

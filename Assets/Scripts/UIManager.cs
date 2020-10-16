@@ -28,33 +28,40 @@ public class UIManager : MonoBehaviour
         //move spawn up to avoid clipping
         spawnPoint += new Vector3(0.0f, 1.0f, 0.0f);
     }
-
+            
     public void CharacterSpawn()
     {
        if (!GameObject.Find("Player(Clone)"))
        {
-           Instantiate(character, spawnPoint, Quaternion.identity); 
+            Instantiate(character, spawnPoint, Quaternion.identity);
+            History.history.Push(new DeSpawnInteraction(character));
        }
        
    }
    public void WagonSpawn() {
        Instantiate(wagon, spawnPoint, Quaternion.identity);
+        History.history.Push(new DeSpawnInteraction(wagon));
     }
     public void BrickSpawn()
     {
-        Instantiate(brick, spawnPoint, Quaternion.identity);
+       Instantiate(brick, spawnPoint, Quaternion.identity);
+        History.history.Push(new DeSpawnInteraction(brick));
     }
     public void RockSpawn() {
        Instantiate(rock, spawnPoint, Quaternion.identity);
+        History.history.Push(new DeSpawnInteraction(rock));
     }
    public void RockClusterSpawn() {
        Instantiate(rockCluster, spawnPoint, Quaternion.identity);
+        History.history.Push(new DeSpawnInteraction(rockCluster));
     }
    public void SpotLightSpawn() {
        Instantiate(spotLight, spawnPoint, Quaternion.identity);
+        History.history.Push(new DeSpawnInteraction(spotLight));
     }
    public void PointLightSpawn() {
        Instantiate(pointLight, spawnPoint, Quaternion.identity);
+        History.history.Push(new DeSpawnInteraction(pointLight));
     }
 
 }
