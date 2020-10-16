@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
     public GameObject character;
+    private bool charFlag = false;
     public GameObject brick;
     public GameObject wagon;
     public GameObject rock;
@@ -31,11 +32,11 @@ public class UIManager : MonoBehaviour
 
     public void CharacterSpawn()
     {
-       if (!GameObject.Find("Player(Clone)"))
+       if (!charFlag)
        {
            Instantiate(character, spawnPoint, Quaternion.identity); 
        }
-       
+       charFlag = true;
    }
    public void WagonSpawn() {
        Instantiate(wagon, spawnPoint, Quaternion.identity);
