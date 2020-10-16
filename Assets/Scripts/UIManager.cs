@@ -6,15 +6,20 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
+    Dictionary<int, GameObject> _dictionary = new Dictionary<int, GameObject>();
+    public GameObject[] objects;
     public GameObject character;
     private bool charFlag = false;
-    public GameObject brick;
-    public GameObject wagon;
-    public GameObject rock;
-    public GameObject rockCluster;
-    public GameObject spotLight;
-    public GameObject pointLight;
+
     Vector3 spawnPoint;
+
+
+    private void Awake()
+    {
+        for (int i = 0; i < objects.Length; i++) {
+            _dictionary.Add(i, objects[i]);
+        }
+    }
 
     // Update is called once per frame
     void Update()
@@ -30,32 +35,18 @@ public class UIManager : MonoBehaviour
         spawnPoint += new Vector3(0.0f, 1.0f, 0.0f);
     }
 
-    public void CharacterSpawn()
+    public void Spawn(int index)
     {
-       if (!charFlag)
-       {
-           Instantiate(character, spawnPoint, Quaternion.identity); 
-       }
-       charFlag = true;
-   }
-   public void WagonSpawn() {
-       Instantiate(wagon, spawnPoint, Quaternion.identity);
-    }
-    public void BrickSpawn()
-    {
-        Instantiate(brick, spawnPoint, Quaternion.identity);
-    }
-    public void RockSpawn() {
-       Instantiate(rock, spawnPoint, Quaternion.identity);
-    }
-   public void RockClusterSpawn() {
-       Instantiate(rockCluster, spawnPoint, Quaternion.identity);
-    }
-   public void SpotLightSpawn() {
-       Instantiate(spotLight, spawnPoint, Quaternion.identity);
-    }
-   public void PointLightSpawn() {
-       Instantiate(pointLight, spawnPoint, Quaternion.identity);
+        if (_dictionary[index] == character) { 
+            if (!charFlag)
+            {
+                Instantiate(objects[index], spawnPoint, Quaternion.identity);
+                charFlag = true;
+            }
+        } else { 
+            Instantiate(objects[index], spawnPoint, Quaternion.identity);
+        }
+
     }
 
 }

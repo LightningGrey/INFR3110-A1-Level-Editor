@@ -2,9 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Runtime.InteropServices;
+using JetBrains.Annotations;
 
 public class SaveFunction : MonoBehaviour
 {
+    public GameObject[] objects;
+
     const string DLL_NAME = "SaveFeatureDLL";
 
     [StructLayout(LayoutKind.Sequential)]
@@ -66,12 +69,20 @@ public class SaveFunction : MonoBehaviour
         
     }
 
-    private void SaveLevel()
+    public void SaveLevel()
     {
+        objects = GameObject.FindGameObjectsWithTag("LevelObject");
 
+        for (int i = 0; i < objects.Length; i++)
+        {
+            LevelObject _levelObject = new LevelObject(
+                objects[i].GetComponent<ObjectData>().ID, objects[i].transform.position.x,
+                objects[i].transform.position.y, objects[i].transform.position.z);
+            AddObject(_levelObject);
+        }
     }
 
-    private void LoadLevel()
+    public void LoadLevel()
     {
 
     }

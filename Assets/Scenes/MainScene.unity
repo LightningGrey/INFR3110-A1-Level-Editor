@@ -406,12 +406,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1416542119}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: WagonSpawn
-        m_Mode: 1
+        m_MethodName: Spawn
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -538,12 +538,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1416542119}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: BrickSpawn
-        m_Mode: 1
+        m_MethodName: Spawn
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -748,9 +748,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1416542119}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: CharacterSpawn
-        m_Mode: 1
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: Spawn
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -840,6 +840,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b2cadbd5006a7640b6533dc1ed4b85d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objects: []
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -1109,13 +1110,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 573019038}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 573019040}
+        m_TargetAssemblyTypeName: SaveFunction, Assembly-CSharp
+        m_MethodName: SaveLevel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -1704,16 +1705,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39ad5b2dd1e2f0444a3905abc588a015, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objects:
+  - {fileID: 7126898088188378535, guid: 852eece027957de42ac897a5b6444221, type: 3}
+  - {fileID: 3436199837247933276, guid: c57f9bb466e3a00418dfaf17d52389b8, type: 3}
+  - {fileID: 5787014852056338755, guid: ae1e67c6f6e702544ac47b6dec005616, type: 3}
+  - {fileID: 5687418629472137349, guid: 3cbb0837bb2bf2d4b8e7a50ecc98d940, type: 3}
+  - {fileID: 2025665458570979028, guid: f9108bec3ca72e24595922a24d1ab0ad, type: 3}
+  - {fileID: 7900700006750614970, guid: fbab16d55c903f649a3f87a86e0a1449, type: 3}
+  - {fileID: 1697816841935111436, guid: 5e841229ebb7efb4eb94928b20989b2c, type: 3}
   character: {fileID: 7126898088188378535, guid: 852eece027957de42ac897a5b6444221,
-    type: 3}
-  brick: {fileID: 3436199837247933276, guid: c57f9bb466e3a00418dfaf17d52389b8, type: 3}
-  wagon: {fileID: 5787014852056338755, guid: ae1e67c6f6e702544ac47b6dec005616, type: 3}
-  rock: {fileID: 5687418629472137349, guid: 3cbb0837bb2bf2d4b8e7a50ecc98d940, type: 3}
-  rockCluster: {fileID: 2025665458570979028, guid: f9108bec3ca72e24595922a24d1ab0ad,
-    type: 3}
-  spotLight: {fileID: 7900700006750614970, guid: fbab16d55c903f649a3f87a86e0a1449,
-    type: 3}
-  pointLight: {fileID: 1697816841935111436, guid: 5e841229ebb7efb4eb94928b20989b2c,
     type: 3}
 --- !u!1 &1461822852
 GameObject:
@@ -1865,12 +1865,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1416542119}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: SpotLightSpawn
-        m_Mode: 1
+        m_MethodName: Spawn
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 6
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -1997,12 +1997,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1416542119}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: RockSpawn
-        m_Mode: 1
+        m_MethodName: Spawn
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 3
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -2129,12 +2129,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1416542119}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: PointLightSpawn
-        m_Mode: 1
+        m_MethodName: Spawn
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 5
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -2261,12 +2261,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1416542119}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: RockClusterSpawn
-        m_Mode: 1
+        m_MethodName: Spawn
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 4
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
