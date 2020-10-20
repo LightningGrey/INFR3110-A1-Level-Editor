@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-    Dictionary<int, GameObject> _dictionary = new Dictionary<int, GameObject>();
+    public Dictionary<int, GameObject> _dictionary = new Dictionary<int, GameObject>();
     public GameObject[] objects;
     public GameObject character;
     private bool charFlag = false;

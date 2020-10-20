@@ -5,12 +5,14 @@ using System.Runtime.InteropServices;
 using JetBrains.Annotations;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
+using UnityEngine.VFX;
 
 public class SaveFunction : MonoBehaviour
 {
     public GameObject[] objects;
     public InputField input;
     public Text panelText;
+    public UIManager _manager;
 
     const string DLL_NAME = "SaveFeatureDLL";
 
@@ -99,7 +101,7 @@ public class SaveFunction : MonoBehaviour
         else
         { 
             string fileName = Application.dataPath + "/Resources/" + input.text 
-                + ".txt";
+                + ".txt"; 
             if (!System.IO.File.Exists(fileName))
             {
                 System.IO.File.Delete(fileName);
@@ -117,14 +119,23 @@ public class SaveFunction : MonoBehaviour
         }
         else
         {
-
             string fileName = Application.dataPath + "/Resources/" + input.text 
                 + ".txt";
             if (!System.IO.File.Exists(fileName))
             {
                 panelText.GetComponent<Text>().text = "File not found.";
             }
+            LoadFromFile(fileName);
 
+            for (int i = 0; i < GetObjectTotal(); i++)
+            {
+                Instantiate(_manager._dictionary[GetObject(i).ID],
+                    new Vector3(GetObject(i).x, GetObject(i).y, GetObject(i).z),
+                    Quaternion.identity);
+
+            }
+
+            panelText.GetComponent<Text>().text = "Scene loaded.";
         }
 
     }
