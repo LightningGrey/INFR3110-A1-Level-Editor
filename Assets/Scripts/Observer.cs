@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ObjectData : MonoBehaviour
+abstract public class Observer : MonoBehaviour
 {
-
-    public int ID;
+    public virtual void OnNotify() { }
 }

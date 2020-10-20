@@ -6,6 +6,7 @@ using JetBrains.Annotations;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
 using UnityEngine.VFX;
+using UnityEngine.Experimental.GlobalIllumination;
 
 public class SaveFunction : MonoBehaviour
 {
@@ -13,6 +14,10 @@ public class SaveFunction : MonoBehaviour
     public InputField input;
     public Text panelText;
     public UIManager _manager;
+
+    private GameObject _pointLight;
+    private GameObject _spotLight;
+    private Object _createdObject;
 
     const string DLL_NAME = "SaveFeatureDLL";
 
@@ -55,41 +60,14 @@ public class SaveFunction : MonoBehaviour
     private static extern bool LoadFromFile([MarshalAs(UnmanagedType.LPStr)] string file);
 
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            LevelObject obj = new LevelObject(5, 6.0f, 2.0f, 1.0f);
-            AddObject(obj);
-            Debug.Log("object added");
-        }
-
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            Debug.Log(GetObject(0).ID);
-            Debug.Log(GetObject(0).x);
-            Debug.Log(GetObject(0).y);
-            Debug.Log(GetObject(0).z);
-        }
-        
-    }
-
     public void SaveLevel()
     {
-
         objects = GameObject.FindGameObjectsWithTag("LevelObject");
 
         for (int i = 0; i < objects.Length; i++)
         {
             LevelObject _levelObject = new LevelObject(
-                objects[i].GetComponent<ObjectData>().ID, objects[i].transform.position.x,
+                objects[i].GetComponent<Object>().ID, objects[i].transform.position.x,
                 objects[i].transform.position.y, objects[i].transform.position.z);
             AddObject(_levelObject);
         }
@@ -129,9 +107,14 @@ public class SaveFunction : MonoBehaviour
 
             for (int i = 0; i < GetObjectTotal(); i++)
             {
-                Instantiate(_manager._dictionary[GetObject(i).ID],
+                _createdObject = new Object(Instantiate(_manager._dictionary[GetObject(i).ID],
                     new Vector3(GetObject(i).x, GetObject(i).y, GetObject(i).z),
-                    Quaternion.identity);
+                    Quaternion.identity));
+                if (_manager._dictionary[GetObject(i).ID] != _spotLight &&
+                    _manager._dictionary[GetObject(i).ID] != _pointLight)
+                {
+                    _manager._subject.AddObserver(_createdObject);
+                }
 
             }
 

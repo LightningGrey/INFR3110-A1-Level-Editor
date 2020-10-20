@@ -9,10 +9,17 @@ public class UIManager : MonoBehaviour
     public Dictionary<int, GameObject> _dictionary = new Dictionary<int, GameObject>();
     public GameObject[] objects;
     public GameObject character;
+    public GameObject spotLight;
+    public GameObject pointLight;
     private bool charFlag = false;
 
     Vector3 spawnPoint;
 
+    //observer
+    public Subject _subject;
+    private Object _createdObject;
+    public Text panelText;
+    private bool gravityBool = true;
 
     private void Awake()
     {
@@ -37,16 +44,42 @@ public class UIManager : MonoBehaviour
 
     public void Spawn(int index)
     {
-        if (_dictionary[index] == character) { 
+
+        if (_dictionary[index] == character)
+        {
             if (!charFlag)
             {
-                Instantiate(objects[index], spawnPoint, Quaternion.identity);
+                _createdObject = new Object(Instantiate(objects[index],
+                spawnPoint, Quaternion.identity));
                 charFlag = true;
             }
-        } else { 
-            Instantiate(objects[index], spawnPoint, Quaternion.identity);
+        } else
+        {
+            _createdObject = new Object(Instantiate(objects[index],
+             spawnPoint, Quaternion.identity));
+        }
+
+
+        if (_dictionary[index] != spotLight && _dictionary[index] != pointLight) {
+            if (gravityBool == false) { 
+                _createdObject.rb.useGravity = false;
+            }
+            _subject.AddObserver(_createdObject);
         }
 
     }
 
+    public void GravityToggleButton()
+    {
+        _subject.Notify();
+        gravityBool = !gravityBool;
+        if (gravityBool == false)
+        {
+            panelText.GetComponent<Text>().text = "Gravity is off.";
+        } else { 
+            panelText.GetComponent<Text>().text = "Gravity is on.";
+        }
+    }
+
 }
+
