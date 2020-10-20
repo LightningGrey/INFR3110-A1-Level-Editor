@@ -3,10 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Runtime.InteropServices;
 using JetBrains.Annotations;
+using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 public class SaveFunction : MonoBehaviour
 {
     public GameObject[] objects;
+    public InputField input;
+    public Text panelText;
 
     const string DLL_NAME = "SaveFeatureDLL";
 
@@ -42,6 +46,12 @@ public class SaveFunction : MonoBehaviour
     [DllImport(DLL_NAME)]
     private static extern void ClearList();
 
+    [DllImport(DLL_NAME)]
+    private static extern bool SaveToFile([MarshalAs(UnmanagedType.LPStr)] string file);
+
+    [DllImport(DLL_NAME)]
+    private static extern bool LoadFromFile([MarshalAs(UnmanagedType.LPStr)] string file);
+
 
     // Start is called before the first frame update
     void Start()
@@ -71,6 +81,7 @@ public class SaveFunction : MonoBehaviour
 
     public void SaveLevel()
     {
+
         objects = GameObject.FindGameObjectsWithTag("LevelObject");
 
         for (int i = 0; i < objects.Length; i++)
@@ -80,10 +91,41 @@ public class SaveFunction : MonoBehaviour
                 objects[i].transform.position.y, objects[i].transform.position.z);
             AddObject(_levelObject);
         }
+
+        if (input.text == "")
+        {
+            panelText.GetComponent<Text>().text = "Enter a file name.";
+        }
+        else
+        { 
+            string fileName = Application.dataPath + "/Resources/" + input.text 
+                + ".txt";
+            if (!System.IO.File.Exists(fileName))
+            {
+                System.IO.File.Delete(fileName);
+            }
+            SaveToFile(fileName);
+            panelText.GetComponent<Text>().text = "File saved.";
+        }
     }
 
     public void LoadLevel()
     {
+        if (input.text == "")
+        {
+            panelText.GetComponent<Text>().text = "Enter a file name.";
+        }
+        else
+        {
+
+            string fileName = Application.dataPath + "/Resources/" + input.text 
+                + ".txt";
+            if (!System.IO.File.Exists(fileName))
+            {
+                panelText.GetComponent<Text>().text = "File not found.";
+            }
+
+        }
 
     }
 
