@@ -14,6 +14,7 @@ public class Drag3D : MonoBehaviour
 
         mouseOffset = gameObject.transform.position - GetMouseWorldPos();
         History.history.Push(new TranslationInteraction(gameObject, gameObject.transform.position));
+        History.future.Clear();
     }
 
     // Update is called once per frame

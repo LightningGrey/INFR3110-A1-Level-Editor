@@ -55,6 +55,7 @@ public class UIManager : MonoBehaviour
         } else
         {
             _createdObject = new Object(this.GetComponent<Factory>().createObject(index, spawnPoint));
+            
         }
 
 

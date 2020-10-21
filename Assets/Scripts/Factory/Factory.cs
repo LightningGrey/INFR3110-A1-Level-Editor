@@ -15,6 +15,10 @@ public class Factory : MonoBehaviour
 
     public GameObject createObject(int id, Vector3 vec3)
     {
-        return objects[id].spawn(vec3);
+        History.history.Push(new DeSpawnInteraction(objects[id],vec3));
+        History.future.Clear();
+        objects[id].clone = objects[id].spawn(vec3);
+        History.objects.Push(objects[id].clone);
+        return objects[id].clone;
     }
 }
