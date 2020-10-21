@@ -21,4 +21,7 @@ public class Factory : MonoBehaviour
         History.objects.Push(objects[id].clone);
         return objects[id].clone;
     }
+    public void destroyObject() {
+
+    }
 }

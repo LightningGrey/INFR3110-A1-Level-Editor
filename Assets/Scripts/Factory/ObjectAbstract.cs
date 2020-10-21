@@ -8,6 +8,7 @@ public abstract class ObjectAbstract: MonoBehaviour
     public GameObject clone;
     public abstract GameObject spawn(Vector3 vec3);
     public void despawn() {
+        
         Destroy(History.objects.Pop());
     }
 }

@@ -2621,7 +2621,9 @@ MonoBehaviour:
   pointLight: {fileID: 1697816841935111436, guid: 5e841229ebb7efb4eb94928b20989b2c,
     type: 3}
   _subject: {fileID: 1692944929}
+  _createdObject: {fileID: 0}
   panelText: {fileID: 855052300}
+  gravityBool: 1
 --- !u!114 &1416542120
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2646,6 +2648,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c34e317b1133f7409a07844942a92c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  s: {fileID: 1692944929}
 --- !u!1 &1461822852
 GameObject:
   m_ObjectHideFlags: 0

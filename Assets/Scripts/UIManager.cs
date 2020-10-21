@@ -17,9 +17,9 @@ public class UIManager : MonoBehaviour
 
     //observer
     public Subject _subject;
-    private Object _createdObject;
+    public Object _createdObject;
     public Text panelText;
-    private bool gravityBool = true;
+    public bool gravityBool = true;
 
     private void Awake()
     {
@@ -58,13 +58,12 @@ public class UIManager : MonoBehaviour
             
         }
 
-
-        if (_dictionary[index] != spotLight && _dictionary[index] != pointLight) {
-            if (gravityBool == false) { 
-                _createdObject.rb.useGravity = false;
-            }
-            _subject.AddObserver(_createdObject);
+        /*
+        if (gravityBool == false) { 
+            _createdObject.rb.useGravity = false;
         }
+        */
+        _subject.AddObserver(_createdObject);
 
     }
 

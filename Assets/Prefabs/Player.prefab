@@ -130,6 +130,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ID: 0
+  _gameObject: {fileID: 0}
+  rb: {fileID: 0}
 --- !u!54 &-2381815237038446632
 Rigidbody:
   m_ObjectHideFlags: 0
