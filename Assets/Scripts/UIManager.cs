@@ -49,14 +49,12 @@ public class UIManager : MonoBehaviour
         {
             if (!charFlag)
             {
-                _createdObject = new Object(Instantiate(objects[index],
-                spawnPoint, Quaternion.identity));
+                _createdObject = new Object(this.GetComponent<Factory>().createObject(index, spawnPoint));
                 charFlag = true;
             }
         } else
         {
-            _createdObject = new Object(Instantiate(objects[index],
-             spawnPoint, Quaternion.identity));
+            _createdObject = new Object(this.GetComponent<Factory>().createObject(index, spawnPoint));
         }
 
 
