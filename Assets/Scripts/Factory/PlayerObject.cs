@@ -1,0 +1,13 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class PlayerObject : ObjectAbstract {
+    public override GameObject spawn(Vector3 vec3) {
+        return Instantiate(prefab, vec3, Quaternion.identity);
+    }
+    public override void despawn() {
+        Destroy(prefab);
+    }
+
+}

@@ -6,14 +6,27 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
+    public Dictionary<int, GameObject> _dictionary = new Dictionary<int, GameObject>();
+    public GameObject[] objects;
     public GameObject character;
-    public GameObject brick;
-    public GameObject wagon;
-    public GameObject rock;
-    public GameObject rockCluster;
     public GameObject spotLight;
     public GameObject pointLight;
+    private bool charFlag = false;
+
     Vector3 spawnPoint;
+
+    //observer
+    public Subject _subject;
+    private Object _createdObject;
+    public Text panelText;
+    private bool gravityBool = true;
+
+    private void Awake()
+    {
+        for (int i = 0; i < objects.Length; i++) {
+            _dictionary.Add(i, objects[i]);
+        }
+    }
 
     // Update is called once per frame
     void Update()
@@ -28,40 +41,43 @@ public class UIManager : MonoBehaviour
         //move spawn up to avoid clipping
         spawnPoint += new Vector3(0.0f, 1.0f, 0.0f);
     }
-            
-    public void CharacterSpawn()
+
+    public void Spawn(int index)
     {
-       if (!GameObject.Find("Player(Clone)"))
-       {
-            Instantiate(character, spawnPoint, Quaternion.identity);
-            History.history.Push(new DeSpawnInteraction(character));
-       }
-       
-   }
-   public void WagonSpawn() {
-       Instantiate(wagon, spawnPoint, Quaternion.identity);
-        History.history.Push(new DeSpawnInteraction(wagon));
+
+        if (_dictionary[index] == character)
+        {
+            if (!charFlag)
+            {
+                _createdObject = new Object(this.GetComponent<Factory>().createObject(index, spawnPoint));
+                charFlag = true;
+            }
+        } else
+        {
+            _createdObject = new Object(this.GetComponent<Factory>().createObject(index, spawnPoint));
+        }
+
+
+        if (_dictionary[index] != spotLight && _dictionary[index] != pointLight) {
+            if (gravityBool == false) { 
+                _createdObject.rb.useGravity = false;
+            }
+            _subject.AddObserver(_createdObject);
+        }
+
     }
-    public void BrickSpawn()
+
+    public void GravityToggleButton()
     {
-       Instantiate(brick, spawnPoint, Quaternion.identity);
-        History.history.Push(new DeSpawnInteraction(brick));
-    }
-    public void RockSpawn() {
-       Instantiate(rock, spawnPoint, Quaternion.identity);
-        History.history.Push(new DeSpawnInteraction(rock));
-    }
-   public void RockClusterSpawn() {
-       Instantiate(rockCluster, spawnPoint, Quaternion.identity);
-        History.history.Push(new DeSpawnInteraction(rockCluster));
-    }
-   public void SpotLightSpawn() {
-       Instantiate(spotLight, spawnPoint, Quaternion.identity);
-        History.history.Push(new DeSpawnInteraction(spotLight));
-    }
-   public void PointLightSpawn() {
-       Instantiate(pointLight, spawnPoint, Quaternion.identity);
-        History.history.Push(new DeSpawnInteraction(pointLight));
+        _subject.Notify();
+        gravityBool = !gravityBool;
+        if (gravityBool == false)
+        {
+            panelText.GetComponent<Text>().text = "Gravity is off.";
+        } else { 
+            panelText.GetComponent<Text>().text = "Gravity is on.";
+        }
     }
 
 }
+
